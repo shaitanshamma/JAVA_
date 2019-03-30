@@ -11,7 +11,7 @@ public class TicTacToe {
     private static final char DOT_O = 'O';
     private static Random random = new Random();
     private static Scanner scanner = new Scanner(System.in);
-    private static final boolean SILLY_MODE = true;
+    private static final boolean SILLY_MODE = false;
 
     public static void main(String[] args) {
 
@@ -76,14 +76,13 @@ public class TicTacToe {
                 y = random.nextInt(size);
             } while (!isCellValid(x, y));
         } else {
-            for (int i = 0; i < size-1; i++) {
-                for (int j = 0; j < size-1; j++) {
+            for (int i = 0; i < size - 1; i++) {
+                for (int j = 0; j < size - 1; j++) {
 // Проверяем клетки по направлениям
-                    if (map[i][j] == DOT_Empty && (map[i][(j + 1)] == DOT_O)){
-//                            || map[i][j - 1] ==
-//                            DOT_O || map[i + 1][j] == DOT_O || map[i - 1][j] == DOT_O ||
-//                            map[i + 1][j - 1] == DOT_O)) {
-                        map[i][j] = DOT_O;
+                    if (map[i][j] == DOT_O) {
+                        while (!isCellValid(x, y)) {
+                            map[i][j + 1] = DOT_O;
+                        }
                     } else do {
                         x = random.nextInt(size);
                         y = random.nextInt(size);
@@ -130,6 +129,7 @@ public class TicTacToe {
         }
         return rezult;
     }
+
     private static boolean checkGorizont(int i, char playerSymbol) {
         int gorizont = 0;
         boolean result = false;
@@ -166,7 +166,9 @@ public class TicTacToe {
             for (int j = 0; j < size; j++) {
                 if (i == j && map[i][j] == playerSymbol) {
                     diag++;
-                    giag++;
+                    if (i == 1 && j == 1) {
+                        giag++;
+                    }
                     if (diag == size) {
                         result = true;
                     }
