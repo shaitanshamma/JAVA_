@@ -76,12 +76,13 @@ public class TicTacToe {
                 y = random.nextInt(size);
             } while (!isCellValid(x, y));
         } else {
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
+            for (int i = 0; i < size-1; i++) {
+                for (int j = 0; j < size-1; j++) {
 // Проверяем клетки по направлениям
-                    if (map[i][j] == DOT_Empty && (map[i][j + 1] == DOT_O || map[i][j - 1] ==
-                            DOT_O || map[i + 1][j] == DOT_O || map[i - 1][j] == DOT_O ||
-                            map[i + 1][j - 1] == DOT_O)) {
+                    if (map[i][j] == DOT_Empty && (map[i][(j + 1)] == DOT_O)){
+//                            || map[i][j - 1] ==
+//                            DOT_O || map[i + 1][j] == DOT_O || map[i - 1][j] == DOT_O ||
+//                            map[i + 1][j - 1] == DOT_O)) {
                         map[i][j] = DOT_O;
                     } else do {
                         x = random.nextInt(size);
@@ -160,16 +161,18 @@ public class TicTacToe {
     private static boolean checkDiag(char playerSymbol) {
         boolean result = false;
         int diag = 0;
+        int giag = 0;
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < map[i].length; j++) {
+            for (int j = 0; j < size; j++) {
                 if (i == j && map[i][j] == playerSymbol) {
                     diag++;
+                    giag++;
                     if (diag == size) {
                         result = true;
                     }
-                } else if ((i == (size - 1) - j) && map[i][j] == playerSymbol) {
-                    diag++;
-                    if (diag == size) {
+                } else if ((i == ((size - 1) - j)) && (map[i][j] == playerSymbol)) {
+                    giag++;
+                    if (giag == size) {
                         result = true;
                     }
                 }
