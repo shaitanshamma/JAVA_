@@ -23,7 +23,6 @@ public class Cats extends Animal {
         int swim = 10;
         double hight = 2;
         String name = "";
-        Cats cat1 = new Cats(98, 0, 2, "Васька", 110, true);
         Dish dish1 = new Dish(100, 150);
         System.out.println("В миске " + dish1.food + " еды.");
         Cats[] cats = new Cats[3];
@@ -35,7 +34,7 @@ public class Cats extends Animal {
                 cats[i].catEat();
                 cats[i].isHungry();
                 dish1.getFood(cats[i].appetit);
-                System.out.println("В миске " + dish1.food + " еды.");
+                System.out.println("В миске осталось " + dish1.food + " еды.");
             } else {
                 System.out.println("Кот " + cats[i].name + " не может пожрать! Ему нужно " + cats[i].appetit + " еды!");
                 System.out.println("В миске мало еды! Наполни миску!");
