@@ -38,6 +38,7 @@ public class GameActionListener implements ActionListener {
         button.setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
         if (board.checkWin()) {
             button.getBoard().getGame().showMessage("Победа!");
+
             board.emptyField();
         } else {
             board.getGame().passTurn();
@@ -58,16 +59,26 @@ public class GameActionListener implements ActionListener {
         if (board.checkWin()) {
             button.getBoard().getGame().showMessage("Победа компуктера!");
             board.emptyField();
-       } else {
+        } else {
             board.getGame().passTurn();
-//            for (int i = 0; i < GameBoard.dimentions; i++) {
-//                for (int j = 0; j < GameBoard.dimentions; j++) {
-//                     if (board.isTurnable(i, j)) {
-//                        if (i - 1 >= 0 && j - 1 >= 0 && board.getButton(cellIndex).getBoard().getGame().getCurrentPlayer().getPlayerSign() ==
-//                                board.getGame().getCurrentPlayer().getPlayerSign()) {
-//                            board.getButton(cellIndex).setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
-//
-//                           // board.getGame().passTurn();
+            // Вот тут должен ничинаться суровый алгоритм
+//            for (int cell = 0; cell < GameBoard.dimentions*GameBoard.dimentions; cell++) {
+//                if (cell+1<GameBoard.dimentions || cell + GameBoard.dimentions < GameBoard.dimentions*GameBoard.dimentions
+//                        || board.getButton(cell+1).getBoard().getGame().getCurrentPlayer().getPlayerSign() ==
+//                                board.getGame().getCurrentPlayer().getPlayerSign() || board.getButton(cell+GameBoard.dimentions).getBoard().getGame().getCurrentPlayer().getPlayerSign() ==
+//                        board.getGame().getCurrentPlayer().getPlayerSign() || board.getButton(cell+1+GameBoard.dimentions).getBoard().getGame().getCurrentPlayer().getPlayerSign() ==
+//                        board.getGame().getCurrentPlayer().getPlayerSign() ) {
+//                            board.getButton(cell).setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
+//                            break;}
+//                else if(cell+2<GameBoard.dimentions && cell + GameBoard.dimentions < GameBoard.dimentions*GameBoard.dimentions
+//                        && board.getButton(cell+1).getBoard().getGame().getCurrentPlayer().getPlayerSign() ==
+//                        board.getGame().getCurrentPlayer().getPlayerSign()) {
+//                    board.getButton(cell).setText(Character.toString(board.getGame().getCurrentPlayer().getPlayerSign()));
+//                    break;}
+//                    if (board.checkWin()) {
+//                        button.getBoard().getGame().showMessage("Победа компуктера!");
+//                        board.emptyField();
+//                        board.getGame().passTurn();
 //
 //                            }
 //
@@ -75,11 +86,12 @@ public class GameActionListener implements ActionListener {
 //                        }
 //
 //                    }
-//                }
-//            }
-//            ;
+
         }
     }
 }
+
+
+
 
 
